@@ -1,11 +1,23 @@
-<div class="container">
+<!-- <div class="container"> -->
 
-    <div *ngIf="personalDetailsDisplay">
+<!-- </div> -->
+
+
+<div class="container">
+    <div style="top: 0; background-color: rgb(141, 248, 10); height: 100px;" class="row ">
+        <button class="col-4 mt-5 text-center h1" (click)="home()"
+            style="height: 40px;width: 160px ;margin-left: 170px; border-radius: 10px;">Home</button>
+        <button class="col-4 mt-5 text-center h1" (click)="DisplayAllUsers()"
+            style="height: 40px;width: 160px ;margin-left: 170px; border-radius: 10px;">All users</button>
+        <button class="col-4 mt-5 text-center h1" (click)="AddPerson()"
+            style="height: 40px;width: 160px ;margin-left: 170px; border-radius: 10px;">Add Person</button>
+    </div>
+    <div *ngIf="personalDetailsForm">
         <form action="">
-            <h1 style="font-size: 50px; margin-top: 30px; color: rgb(255, 0, 136);">Personal details</h1>
+            <h1 style="font-size: 50px; margin-top: 30px; color: rgb(4, 0, 254);">Personal details</h1>
             <div class="row mt-5">
                 <div class="col-1 mt-3"> <!--  for img-->
-                    <img src="" alt="" width="160" height="190">
+                    <img src="{}" alt="" width="150" height="170px">
                 </div>
 
                 <div class="col-11"> <!--  -->
@@ -28,7 +40,7 @@
                                 [(ngModel)]="personDetailsObj.Lastname">
                         </div>
                     </div>
-                    <div class="row mt-5">
+                    <div class="row mt-1">
                         <div class="col-1"></div>
                         <div class="col-3">
                             <p style="font-size: 17px;">Upload Image</p>
@@ -52,28 +64,43 @@
             </div>
 
             <div class="row">
-                <div class="col-3">
-                    <button class="add_address" style="margin-top: 35px;" (click)="addAddress()" *ngIf="!isUpdate">Add
-                        Address</button>
-                    <button (click)="show()" *ngIf="isUpdate">Update</button>
+                <div class="col-2" *ngIf="updatePersonbtn">
+                    <button class="btn btn-warning btn-lg" style="margin-top: 40px;font-size: 20px;
+                    height: 40px; width: 170px;" (click)="updatePerson1()">Update</button>
                 </div>
+                <div class="col text-right" *ngIf="addAddressButton">
+                    <button class="buttonSize" style="margin-top: 40px; margin-right:145px" (click)="addAddress()">Add
+                        Address</button>
+                </div>
+
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-3">
                     <button class="submit" (click)="onSub()" *ngIf="submitHide">Display all</button>
                 </div>
-            </div>
+            </div> -->
         </form>
-    </div> <!-- personalDetailsDisplay -->
+    </div> <!-- personalDetailsForm -->
 
-    <!--   Address Details -->
-    <div *ngIf="addressDisplay">
-        <h1 style="font-size: 40px; margin-top: 30px;">Address details</h1>
+    <!--   Address Details Form -->
+    <div *ngIf="addressDisplayForm">
+        <h1 style="font-size: 40px; margin-top: 30px; color: coral;">Address details</h1>
         <form action="">
-            <div class="row-cols-1 mt-5">
-                <div class="col-12">
-                    <label for="DateOfBirth">Address</label>
+
+            <div class="row mt-5">
+                <div class="col-2">
+                    <label for="AddressType">Address type</label>
+                    <select name="AddressType" id="" style="height: 40px; width: 270px; font-size: 20px; "
+                        class="form-control" [(ngModel)]="addressObj.AddressType">
+                        <option value="Home">Home</option>
+                        <option value="Business">Business</option>
+                    </select>
+                </div>
+
+                <div class="col-1"></div>
+                <div class="col-9">
+                    <label for="Address">Address</label>
                     <input type="text" class="form-control" id="Address" name="Address" [(ngModel)]="addressObj.Addre">
                 </div>
             </div>
@@ -109,59 +136,54 @@
                         [(ngModel)]="addressObj.LevelAccess">
                 </div>
                 <div class="col-3">
-                    <!-- <div class=" form-check form-switch ml-2">
-                <p> <label for="LevelAccess">LevelAccess</label></p>
-                <input type="checkbox" class="form-check-input" id="LevelAccess" name="LevelAccess">
-            </div> -->
                     <p> <label for="isActive">isActive</label></p>
                     <input type="checkbox" class="form-check-input" id="isActive" name="isActive">
                 </div>
-
-                <div class="col-3">
-                    <button class="add_more_address" style="margin-top: 35px;" (click)="additionalAddress()"
-                        *ngIf="!isUpdate">Add more
-                        Address</button>
-                    <button class="btn btn-warning btn-lg" (click)="show()" *ngIf="isUpdate">Update</button>
+                <div class="col-3"></div>
+                <div class="col-3 text-right">
+                    <button class="btn btn-success btn-lg"
+                        style="margin-top: 35px; height: 40px;width: 100px ;font-size: 20px;"
+                        (click)="additionalAddress()" *ngIf="SaveAddressBtn">Save</button>
+                    <button class="btn btn-warning btn-lg"
+                        style="margin-top: 35px;margin-left: 20px; height: 40px;width: 170px ;font-size: 20px;"
+                        *ngIf="updateAddressbtn" (click)="updateAddress1()">Update Address</button>
+                    <button class="btn btn-danger btn-lg" (click)="cancelAddress()"
+                        style="margin-top: 35px;margin-left: 40px; height: 40px;width: 100px ;font-size: 20px;">Cancel</button>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3">
-                    <button class="add_address" style="margin-top: 35px;" (click)="addPersonalDetails()"
-                        *ngIf="!isUpdate">Save</button>
-
-                </div>
+                <!-- <div class="col-3 text-right"></div> -->
             </div>
         </form>
-    </div> <!--   Address Details -->
+    </div> <!--   Address Details form-->
 
 
 
 
 
     <!-- Displaying All details -->
-    <div *ngIf="showAllDetails">
-        <p style="font-size: 70px; margin-top: 40px; color: green;">Personal details</p>
-        <div *ngFor="let s of multiplePersons; let perObjectId = index">
+    <!-- <div *ngFor="let s of multiplePersons; let perObjectId = index">
 
-            <div class="row mt-4" style="font-size: 40px; margin-left: 2px; color: rgb(0, 21, 255);">Person
+        <div *ngIf="PersonalDetailsDisplay">
+            <p style="font-size: 70px; margin-top: 40px; color: green;">Personal details</p>
+
+            <div class="row mt-4" style="font-size: 40px; margin-left: 2px; color: rgb(215, 92, 149);">Person
                 {{perObjectId+1}}</div>
 
-            <div class="row" style="margin-top: 20px;">
+            <div class="row" style="margin-top: 20px; font-size: 25px; color: rgb(0, 145, 255);">
                 <div class="col mx-1">Firstname</div>
                 <div class="col mx-1">Lastname</div>
                 <div class="col ">Email</div>
                 <div class="col mx-1">DateOfBirth</div>
+
+                <div class="col mx-1">
+                    <button class="btn btn-warning btn-lg" (click)="updatePerson(s)">Update Person</button>
+                </div>
                 <div class="col mx-1">
                     <button (click)="deletePersonDetails(perObjectId)" class="btn btn-danger btn-lg">Delete
                         Person</button>
                 </div>
-                <div class="col mx-1">
-                    <button class="btn btn-warning btn-lg" (click)="updatePerson(s)">Update Person</button>
-                </div>
 
             </div>
-            <div class="row" style="margin-top: 10px;">
+            <div class="row" style="margin-top: 10px;font-size: 15px;">
                 <div class="col mx-1">{{s.Firstname}}</div>
                 <div class="col mx-1">{{s.Lastname}}</div>
                 <div class="col mx-1">{{s.Email}}</div>
@@ -169,29 +191,31 @@
                 <div class="col mx-1"></div>
                 <div class="col mx-1"></div>
             </div>
+        </div> 
 
-
+        <div *ngIf="AddressDetailsDisplay">
             <p style="font-size: 40px; margin-top: 40px; color: rgb(255, 153, 0);">Address details</p>
 
             <div *ngFor="let add of s.Addr; let perAddrId = index" class="row" class="mt-5">
-                <div class="row" style="margin-top: 12px;">
+                <div class="row" style="margin-top: 12px;font-size: 20px; color:rgb(138, 42, 227)">
                     <div class="col mx-1">Address {{perAddrId+1}}</div>
                     <div class="col mx-1">City</div>
                     <div class="col mx-1">State</div>
                     <div class="col mx-1">Zipcode</div>
-                    <div class="col mx-1">Phone Number</div>
+                    <div class="col mx-1">Mobile No</div>
                     <div class="col mx-1">LevelAccess</div>
-                    <div class="col mx-1">
-                        <button class="btn btn-danger btn-lg" (click)="deleteAddress(add,perObjectId,perAddrId)">Delete
-                            Address</button>
-                    </div>
+
                     <div class="col mx-1">
                         <button class="btn btn-warning btn-lg" (click)="updateAddress(add,perObjectId,perAddrId)">Update
                             Address</button>
                     </div>
+                    <div class="col mx-1">
+                        <button class="btn btn-danger btn-lg" (click)="deleteAddress(add,perObjectId,perAddrId)">Delete
+                            Address</button>
+                    </div>
 
                 </div>
-                <div class="row" style="margin-top: 5px;">
+                <div class="row" style="margin-top: 5px;font-size: 15px;">
                     <div class="col mx-1">{{add.Addre}}</div>
                     <div class="col mx-1">{{add.City}}</div>
                     <div class="col mx-1">{{add.State}}</div>
@@ -204,6 +228,129 @@
             </div>
         </div>
 
-        <button *ngIf="back" (click)="show" class="btn btn-warning btn-lg">Back</button>
+    </div> -->
+
+
+
+
+    <div *ngIf="TabledisplayAllAddress" class="mt-5">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="font-size: 18px;" class="text-center">
+                    <th scope="col"></th>
+                    <th scope="col">Address Type</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Zipcode</th>
+                    <th scope="col">Mobile No</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let addobj of personDetailsObj.Addr; let perAddrId = index">
+                <tr style="font-size: 15px;" class="text-center">
+                    <td>Address {{perAddrId+1}}</td>
+                    <td>{{addobj.AddressType}}</td>
+                    <td>{{addobj.Addre}}</td>
+                    <td>{{addobj.City}}</td>
+                    <td>{{addobj.State}}</td>
+                    <td>{{addobj.Zipcode}}</td>
+                    <td>{{addobj.Mobile}}</td>
+                    <td>
+                        <button class="btn btn-secondary" (click)="editAddress(addobj,perAddrId)">Edit</button>
+                        <button class="btn btn-danger" style="margin-left:10px"
+                            (click)="deleteAddress1(perAddrId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
     </div>
+
+
+    <div class="row mt-5" *ngIf="searchInputField">
+        <div class="col-1"></div>
+        <input type="text" placeholder="Search Person" class="form-control" [(ngModel)]="searchValue"
+            (ngModelChange)="searchFunction(searchValue)">
+    </div>
+
+    <div *ngIf="TablePersonalDetailsDisplay">
+        <h1 style="font-size: 50px; margin-top: 30px; color: rgb(65, 182, 23);">Personal details</h1>
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr style="font-size: 18px;" class="text-center">
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">DateOfBirth</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <tr *ngFor="let perObj of multiplePersons; let perId = index" style="font-size: 15px;"
+                    class="text-center">
+                    <td>{{perObj.Firstname}}</td>
+                    <td>{{perObj.Lastname}}</td>
+                    <td>{{perObj.Email}}</td>
+                    <td>{{perObj.DateOfBirth}}</td>
+                    <td>
+                        <button class="btn btn-secondary" (click)="editPerson(perObj,perId)">Edit</button>
+                        <button class="btn btn-danger" style="margin-left:10px"
+                            (click)="deletePersonDetails(perId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- DisplaysearchPersonArray -->
+    <div *ngIf="DisplaysearchPersonArray">
+        <h1 style="font-size: 50px; margin-top: 30px; color: rgb(65, 182, 23);">Personal details</h1>
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr style="font-size: 18px;" class="text-center">
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">DateOfBirth</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <tr *ngFor="let perObj of searchPersonArray; let perId = index" style="font-size: 15px;"
+                    class="text-center">
+                    <td>{{perObj.Firstname}}</td>
+                    <td>{{perObj.Lastname}}</td>
+                    <td>{{perObj.Email}}</td>
+                    <td>{{perObj.DateOfBirth}}</td>
+                    <td>
+                        <button class="btn btn-secondary" (click)="editPerson(perObj,perId)">Edit</button>
+                        <button class="btn btn-danger" style="margin-left:10px"
+                            (click)="deletePersonDetails(perId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="row">
+        <div class="col-3" *ngIf="saveBtn">
+            <button class="submit" style="margin-top: 40px;" (click)="addPersonalDetails1()">Save</button>
+
+        </div>
+    </div>
+
+    <div>
+        <button *ngIf="back" (click)="backtoform()" class="btn btn-warning btn-lg mt-5">Back</button>
+    </div>
+
+
+
 </div>
