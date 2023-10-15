@@ -1,14 +1,14 @@
-.container{
+.container {
     align-items: center;
 }
 
-.form-control{
+.form-control {
     height: 40px;
     width: 345px;
 
 }
 
-body{
+body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -19,8 +19,8 @@ body{
 
 
 ul {
-    list-style-type: none; 
-  }
+    list-style-type: none;
+}
 
 label {
     font-size: 20px;
@@ -52,7 +52,7 @@ input {
     border-radius: 5px;
 }
 
-.submit{
+.submit {
     margin-top: 35px;
     font-size: 20px;
     height: 40px;

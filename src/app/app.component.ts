@@ -199,7 +199,7 @@ export class AppComponent {
         this.addressObj = addobj;
         this.isUpdate = true;
         this.SaveAddressBtn = false;
-        this.addAddressButton=false;
+        this.addAddressButton = false;
         this.updateAddressbtn = true
         // this.personDetailsObj.Addr[Id]=addobj;
         this.searchInputField = false;
@@ -209,7 +209,7 @@ export class AppComponent {
         this.personalDetailsForm = true;
         this.TabledisplayAllAddress = true;
         this.addressDisplayForm = false;
-        this.addAddressButton=true;
+        this.addAddressButton = true;
     }
 
     editPerson(perObj: any, Id: any) {
@@ -217,7 +217,7 @@ export class AppComponent {
         this.personDetailsObj = perObj;
         // this.AddressDetailsDisplay=true;
         this.TabledisplayAllAddress = true;
-        this.addAddressButton=true;
+        this.addAddressButton = true;
         this.updatePersonbtn = true;
         this.TablePersonalDetailsDisplay = false;
         this.back = true;
@@ -239,7 +239,7 @@ export class AppComponent {
         this.isUpdate = false;
         // this.saveBtn = false;
         this.back = false;
-        this.searchInputField=true;
+        this.searchInputField = true;
     }
     show() {
         this.addressDisplayForm = false;
@@ -272,7 +272,7 @@ export class AppComponent {
     searchFunction(sValue: any) {
         this.DisplaysearchPersonArray = true;
         this.TablePersonalDetailsDisplay = false;
-        this.searchPersonArray = this.multiplePersons.filter((searchValue:any) => {
+        this.searchPersonArray = this.multiplePersons.filter((searchValue: any) => {
             if (searchValue.Firstname.includes(sValue))
                 // return this.searchPersonArray;
                 return searchValue;
