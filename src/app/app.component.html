@@ -53,7 +53,7 @@
                 <div class="col-auto" style="width: 30px;"></div>
                 <div class="col-auto">
                     <label for="Gender">Gender</label>
-                    <p> <input type="radio" name="Gender" value="male" [(ngModel)]="personDetailsObj.Gender"><span
+                    <p> <input type="radio" name="Gender" value="Male" [(ngModel)]="personDetailsObj.Gender"><span
                             style="font-size: 15px;">Male</span></p>
                     <p> <input type="radio" name="Gender" value="Female" [(ngModel)]="personDetailsObj.Gender"> <span
                             style="font-size: 15px;">Female</span> </p>
@@ -63,10 +63,10 @@
 
 
             <div class="row">
-                <h1 style="font-size: 40px; margin-top: 30px; color: coral;">Address details</h1>
+                <h1 style="font-size: 40px; margin-top: 20px; color: coral; ">Address details</h1>
                 <div class="col-4"> </div>
                 <div class="col text-right" *ngIf="addAddressButton">
-                    <button class="buttonSize" style="margin-top: 40px; " (click)="addAddress()">Add
+                    <button class="buttonSize" style="margin-top: 30px; " (click)="addAddress()">Add
                         Address</button>
                 </div>
 
@@ -155,8 +155,8 @@
                 <div class="col text-right">
                     <button class="btn btn-success btn-lg" style=" height: 40px;width: 100px ;font-size: 20px;"
                         (click)="additionalAddress()" *ngIf="SaveAddressBtn">Save</button>
-                    <button class="btn btn-warning btn-lg" style=" height: 40px;width: 170px ;font-size: 20px;"
-                        *ngIf="updateAddressbtn" (click)="updateAddress1()">Update Address</button>
+                    <button class="btn btn-warning btn-lg" style=" height: 40px;width: 150px ;font-size: 20px;"
+                        *ngIf="updateAddressbtn" (click)="updateAddress1()">Update</button>
                 </div>
 
                 <!-- <div class="col-3 text-right"></div> -->
@@ -242,7 +242,7 @@
 
 
 
-    <div *ngIf="TabledisplayAllAddress" class="mt-5">
+    <div *ngIf="TabledisplayAllAddress && personDetailsObj.Addr.length>0" class="mt-5">
         <table class="table table-bordered">
             <thead>
                 <tr style="font-size: 18px;" class="text-center">
@@ -269,9 +269,10 @@
                     <td>{{addobj.Mobile}}</td>
                     <td>{{addobj.isActive}}</td>
                     <td>
-                        <button class="btn btn-secondary" (click)="editAddress(addobj,perAddrId)">Edit</button>
+                        <button class="btn btn-warning" (click)="editAddress(addobj,perAddrId)"><span
+                                class="glyphicon glyphicon-pencil"></span></button>
                         <button class="btn btn-danger" style="margin-left:10px"
-                            (click)="deleteAddress1(perAddrId)">Delete</button>
+                            (click)="deleteAddress1(perAddrId)"><span class="glyphicon glyphicon-trash"></span></button>
                     </td>
                 </tr>
             </tbody>
@@ -313,9 +314,11 @@
                     <td>{{perObj.DateOfBirth}}</td>
                     <td>{{perObj.Gender}}</td>
                     <td>
-                        <button class="btn btn-secondary" (click)="editPerson(perObj,perId)">Edit</button>
+                        <button class="btn btn-warning" (click)="editPerson(perObj,perId)"><span
+                                class="glyphicon glyphicon-pencil"></span></button>
                         <button class="btn btn-danger" style="margin-left:10px"
-                            (click)="deletePersonDetails(perId)">Delete</button>
+                            (click)="deletePersonDetails(perId)"><span
+                                class="glyphicon glyphicon-trash"></span></button>
                     </td>
                 </tr>
             </tbody>
@@ -351,9 +354,11 @@
                     <td>{{perObj.Gender}}</td>
 
                     <td>
-                        <button class="btn btn-secondary" (click)="editPerson(perObj,perId)">Edit</button>
+                        <button class="btn btn-secondary" (click)="editPerson(perObj,perId)"><span
+                                class="glyphicon glyphicon-pencil"></span></button>
                         <button class="btn btn-danger" style="margin-left:10px"
-                            (click)="deletePersonDetails(perId)">Delete</button>
+                            (click)="deletePersonDetails(perId)"><span
+                                class="glyphicon glyphicon-trash"></span></button>
                     </td>
                 </tr>
             </tbody>
@@ -361,21 +366,22 @@
     </div>
 
     <div class="row">
-        <div class="col-2" *ngIf="updatePersonbtn">
-            <button class="btn btn-warning btn-lg" style="margin-top: 40px;font-size: 20px;
-            height: 40px; width: 170px;" (click)="updatePerson1()">Update</button>
-        </div>
+
     </div>
 
 
     <div class="row" style="margin-top: 100px;">
         <div class="col-auto text-left">
-            <button *ngIf="back" (click)="back1()" class="btn btn-danger btn-lg mt-5 text-right"
+            <button *ngIf="back" (click)="back1()" class="btn btn-danger btn-lg"
                 style=" font-size: 20px; height: 40px; width:100px">Cancel</button>
         </div>
         <div class="col text-right" *ngIf="saveBtn">
-            <button class="submit" style="margin-top: 40px;" (click)="addPersonalDetails1()">Save</button>
-
+            <button class="btn btn-success btn-lg" style=" height: 40px;width: 100px ;font-size: 20px;"
+                (click)="addPersonalDetails1()">Save</button>
+        </div>
+        <div class="col text-right" *ngIf="updatePersonbtn">
+            <button class="btn btn-warning btn-lg" style="font-size: 20px;
+            height: 40px; width: 150px;" (click)="updatePerson1()">Update</button>
         </div>
     </div>
 

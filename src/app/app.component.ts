@@ -239,6 +239,7 @@ export class AppComponent {
         this.isUpdate = false;
         // this.saveBtn = false;
         this.back = false;
+        this.searchInputField=true;
     }
     show() {
         this.addressDisplayForm = false;
