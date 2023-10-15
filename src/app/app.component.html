@@ -53,14 +53,16 @@
                 <div class="col-auto"></div>
                 <div class="col-3">
                     <label for="Gender">Gender</label>
-                   <p> <input type="radio" name="Gender" value="male" [(ngModel)]="personDetailsObj.Gender"><span style="font-size: 15px;">Male</span></p>
-                    <p> <input type="radio" name="Gender" value="Female" [(ngModel)]="personDetailsObj.Gender"> <span style="font-size: 15px;" >Female</span>  </p>
+                    <p> <input type="radio" name="Gender" value="male" [(ngModel)]="personDetailsObj.Gender"><span
+                            style="font-size: 15px;">Male</span></p>
+                    <p> <input type="radio" name="Gender" value="Female" [(ngModel)]="personDetailsObj.Gender"> <span
+                            style="font-size: 15px;">Female</span> </p>
                 </div>
 
             </div>
 
             <div class="row">
-                
+
                 <div class="col text-right" *ngIf="addAddressButton">
                     <button class="buttonSize" style="margin-top: 40px; margin-right:240px" (click)="addAddress()">Add
                         Address</button>
@@ -118,7 +120,7 @@
                         [(ngModel)]="addressObj.Zipcode">
                 </div>
                 <!-- <div class="col-auto"></div> -->
-                
+
                 <!-- <div class="col-1"></div> -->
             </div>
 
@@ -136,7 +138,8 @@
                 <div class="col-auto"></div>
                 <div class="col-3">
                     <p> <label for="isActive">isActive</label></p>
-                    <input type="checkbox" class="form-check-input" id="isActive" name="isActive" [(ngModel)]="addressObj.isActive">
+                    <input type="checkbox" class="form-check-input" id="isActive" name="isActive"
+                        [(ngModel)]="addressObj.isActive">
                 </div>
                 <!-- <div class="col-3"></div> -->
                 <div class="col-3 text-right">
@@ -333,7 +336,7 @@
                 <tr *ngFor="let perObj of searchPersonArray; let perId = index" style="font-size: 15px;"
                     class="text-center">
                     <td>{{perObj.Firstname}}</td>
-                    <td>{{perObj.Middlename}</td>
+                    <td>{{perObj.Middlename}}</td>
                     <td>{{perObj.Lastname}}</td>
                     <td>{{perObj.Email}}</td>
                     <td>{{perObj.DateOfBirth}}</td>
@@ -364,7 +367,8 @@
     </div>
 
     <div>
-        <button *ngIf="back" (click)="back1()" class="btn btn-secondary btn-lg mt-5" style="height: 40px; width:80px">Cancel</button>
+        <button *ngIf="back" (click)="back1()" class="btn btn-secondary btn-lg mt-5"
+            style="height: 40px; width:80px">Cancel</button>
     </div>
 
 
