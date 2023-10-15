@@ -96,6 +96,7 @@ export class AppComponent {
         this.back = false;
         this.DisplaysearchPersonArray=false;
         this.searchInputField=false;
+        this.back=true;
     }
 
     addAddress() {
@@ -108,6 +109,8 @@ export class AppComponent {
         this.addressObj = new Address();
         this.updateAddressbtn = false;
         this.SaveAddressBtn = true;
+        this.updatePersonbtn=false;
+        this.searchInputField=false;
     }
 
     additionalAddress() {
@@ -118,6 +121,7 @@ export class AppComponent {
         this.TabledisplayAllAddress = true;
         this.addressDisplayForm = false;
         this.addAddressButton = true;
+        this.searchInputField=false;
 
     }
 
@@ -146,6 +150,9 @@ export class AppComponent {
         this.addressDisplayForm = false;
         this.saveBtn = false;
         this.back = false;
+        this.TablePersonalDetailsDisplay=true;
+        this.searchInputField=true;
+
     }
 
     cancelAddress() {
@@ -153,6 +160,7 @@ export class AppComponent {
         this.personalDetailsForm = true;
         this.addAddressButton = true;
         this.TabledisplayAllAddress = true;
+        this.searchInputField=false;
     }
 
     deletePersonDetails(i: number) {
@@ -165,6 +173,7 @@ export class AppComponent {
         this.TablePersonalDetailsDisplay = false;
         this.personalDetailsForm = true;
         this.AddressDetailsDisplay = false;
+        
     }
 
     deleteAddress(a: any, pId: any, aId: any) {
@@ -192,6 +201,7 @@ export class AppComponent {
         this.SaveAddressBtn = false;
         this.updateAddressbtn = true
         // this.personDetailsObj.Addr[Id]=addobj;
+        this.searchInputField=false;
     }
 
     updateAddress1() {
@@ -208,6 +218,7 @@ export class AppComponent {
         this.updatePersonbtn = true;
         this.TablePersonalDetailsDisplay = false;
         this.back = true;
+        this.searchInputField=false;
 
     }
 
@@ -234,7 +245,7 @@ export class AppComponent {
         this.back = true;
     }
 
-    backtoform() {
+    back1() {
         this.TablePersonalDetailsDisplay = true;
         this.personalDetailsForm = false;
         this.back = false;
@@ -243,6 +254,9 @@ export class AppComponent {
         this.TabledisplayAllAddress = false;
         this.AddressDetailsDisplay = false;
         this.saveBtn = false;
+        this.updatePersonbtn=false;
+        this.searchInputField=true;;
+        this.addressDisplayForm=false;
     }
     onSub() {
         this.TablePersonalDetailsDisplay = true;
@@ -268,8 +282,10 @@ export class AppComponent {
 
 export class PersonalDetails {
     public Firstname!: string;
+    public Middlename!: string;
     public Lastname!: string;
     // public Mobile!: number;
+    public Gender!:any;
     public Email!: string;
     public DateOfBirth!: any;
     public Addr: Address[] = [];
@@ -284,7 +300,7 @@ export class Address {
     // public Country!: string;
     public Zipcode!: any;
     public Mobile!: number;
-    public LevelAccess!: any;
+    // public LevelAccess!: any;
     public isActive!: boolean;
 }
 
